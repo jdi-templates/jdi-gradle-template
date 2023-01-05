@@ -1,3 +1,6 @@
 .gradle/
 .idea/
+build/
+target/
+allure-results/
 out/
