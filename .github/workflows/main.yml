@@ -21,7 +21,6 @@ jobs:
     name: Tests on JDK
     runs-on: ubuntu-latest
     strategy:
-      max-parallel: 1
       fail-fast: false
       matrix:
         java: [8, 11, 13, 14, 15, 17, 18]
@@ -47,14 +46,6 @@ jobs:
         if: ${{ matrix.java < 16 }}
         run: |
           echo "ASPECT_ARGS=-Daspectj.args=''" >> $GITHUB_ENV
-
-      - name: Start Selenoid
-        uses: Xotabu4/selenoid-github-action@v2
-        id: start-selenoid
-
-
-      - name: Check Selenoid has been started
-        run: curl http://localhost:4444/status
 
       - name: Tests
         id: functests
