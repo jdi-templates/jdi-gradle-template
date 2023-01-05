@@ -36,10 +36,6 @@ jobs:
           java-package: jdk
           cache: 'gradle'
 
-      - name: Build with Maven
-        id: build
-        run: ./gradlew compile
-
       - name: Set parameters for AspectJ
         id: aspect_j_params
         if: ${{ matrix.java > 15 }}
