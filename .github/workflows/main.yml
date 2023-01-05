@@ -35,18 +35,6 @@ jobs:
           java-package: jdk
           cache: 'gradle'
 
-      - name: Set parameters for AspectJ
-        id: aspect_j_params
-        if: ${{ matrix.java > 15 }}
-        run: |
-          echo "ASPECT_ARGS=-Daspectj.args="\"$SUREFIRE_ARGS\" >> $GITHUB_ENV
-
-      - name: Set parameters for AspectJ
-        id: aspect_j_params_empty
-        if: ${{ matrix.java < 16 }}
-        run: |
-          echo "ASPECT_ARGS=-Daspectj.args=''" >> $GITHUB_ENV
-
       - name: Tests
         id: functests
         timeout-minutes: 15
