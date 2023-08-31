@@ -8,13 +8,9 @@ repositories {
 }
 
 dependencies {
-    api 'com.epam.jdi:jdi-light-html:1.4.7'
-    api 'org.apache.logging.log4j:log4j-api:2.17.1'
-    api 'org.apache.logging.log4j:log4j-core:2.17.1'
-    api 'org.apache.logging.log4j:log4j-slf4j-impl:2.17.1'
-    api 'org.apache.logging.log4j:log4j-1.2-api:2.17.1'
-    testImplementation 'io.qameta.allure:allure-testng:2.17.2'
-    testImplementation 'org.testng:testng:7.5.1'
+    api 'com.epam.jdi:jdi-light-html:+'
+    testImplementation 'io.qameta.allure:allure-testng:2.23.0'
+    testImplementation 'org.testng:testng:7.8.0'
     testImplementation 'io.netty:netty-transport-native-epoll:4.1.78.Final'
     testImplementation 'io.netty:netty-transport-native-kqueue:4.1.78.Final'
 }
@@ -26,7 +22,7 @@ ext {
 group = 'com.epam.jdi'
 version = '1.0.0'
 description = 'Template: JDI Light TestNG Gradle'
-java.sourceCompatibility = JavaVersion.VERSION_1_8
+java.sourceCompatibility = JavaVersion.VERSION_11
 
 processTestResources {
     with copySpec {
