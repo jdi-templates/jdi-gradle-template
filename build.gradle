@@ -1,0 +1,55 @@
+plugins {
+    id 'java-library'
+    id 'maven-publish'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    api 'com.epam.jdi:jdi-light-html:1.4.7'
+    api 'org.apache.logging.log4j:log4j-api:2.17.1'
+    api 'org.apache.logging.log4j:log4j-core:2.17.1'
+    api 'org.apache.logging.log4j:log4j-slf4j-impl:2.17.1'
+    api 'org.apache.logging.log4j:log4j-1.2-api:2.17.1'
+    testImplementation 'io.qameta.allure:allure-testng:2.17.2'
+    testImplementation 'org.testng:testng:7.4.0'
+    testImplementation 'io.netty:netty-transport-native-epoll:4.1.78.Final'
+    testImplementation 'io.netty:netty-transport-native-kqueue:4.1.78.Final'
+}
+
+ext {
+    driver = 'chrome'
+}
+
+group = 'com.epam.jdi'
+version = '1.0.0'
+description = 'Template: JDI Light TestNG Gradle'
+java.sourceCompatibility = JavaVersion.VERSION_1_8
+
+processTestResources {
+    with copySpec {
+        exclude 'src/test/resources/test.properties'
+    }
+    with copySpec {
+        from 'src/test/resources/test.properties'
+        filter { String line ->
+            line
+                    .replace('${driver}', project.property('driver'))
+        }
+        duplicatesStrategy 'include'
+    }
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+tasks.withType(Javadoc) {
+    options.encoding = 'UTF-8'
+}
+
+tasks.named('test') {
+    useTestNG()
+}
