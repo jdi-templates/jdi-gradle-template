@@ -38,7 +38,7 @@ jobs:
         id: functests
         timeout-minutes: 15
         continue-on-error: true
-        run: ./gradlew test -Pdriver=chrome -i
+        run: ./gradlew test -Pdriver=chrome
 
       - name: Get Allure history
         uses: actions/checkout@v3
