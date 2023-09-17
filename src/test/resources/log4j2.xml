@@ -3,7 +3,7 @@
 
   <Properties>
     <Property name="logFileName">jdiEvents</Property>
-    <Property name="baseDir">./target/.logs</Property>
+    <Property name="baseDir">./build/.logs</Property>
   </Properties>
 
   <Appenders>
@@ -30,15 +30,6 @@
         </Delete>
       </DefaultRolloverStrategy>
     </RollingFile>
-
-    <RollingFile name="htmlFileLogger" fileName="${baseDir}/app-info.html"
-                 filePattern="${baseDir}/app-info-%d{yyyy-MM-dd}.html">
-      <HTMLLayout charset="UTF-8" title="Info Logs" locationInfo="true"/>
-      <Policies>
-        <TimeBasedTriggeringPolicy interval="1" modulate="true"/>
-        <SizeBasedTriggeringPolicy size="10 MB"/>
-      </Policies>
-    </RollingFile>
   </Appenders>
 
 
@@ -46,16 +37,13 @@
     <!-- Every configuration must have a root logger. If one is not configured the default root LoggerConfig is ERROR with Console appender attached. -->
     <Root level="INFO">
       <AppenderRef ref="fileAppender"/>
-      <AppenderRef ref="htmlFileLogger"/>
       <AppenderRef ref="consoleAppender"/>
     </Root>
 
     <!-- additivity means, that parent-logger (in every case the root-logger) will also get the chance to log this stuff -->
     <Logger name="JDI" additivity="FALSE" level="INFO">
       <AppenderRef ref="fileAppender"/>
-      <AppenderRef ref="htmlFileLogger"/>
       <AppenderRef ref="consoleAppender"/>
     </Logger>
-
   </Loggers>
 </Configuration>
