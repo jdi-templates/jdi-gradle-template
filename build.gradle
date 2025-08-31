@@ -57,7 +57,6 @@ tasks.withType(Test) {
         '--add-opens', 'java.base/java.lang.reflect=ALL-UNNAMED',
         '--add-opens', 'java.base/java.util=ALL-UNNAMED',
         '--add-opens', 'java.base/java.io=ALL-UNNAMED',
-        '--add-opens', 'java.base/java.net=ALL-UNNAMED',
         '-XX:-OmitStackTraceInFastThrow'
     ]
     outputs.upToDateWhen { false }
